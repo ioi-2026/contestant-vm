@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contest Rules - IOI 2026 Uzbekistan</title>
+  <style>
+    @font-face {
+      font-family: "Open Sans Local";
+      font-style: normal;
+      font-weight: 400;
+      src: url("fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-regular.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Open Sans Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-700.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 600;
+      src: url("fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-600.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-700.woff2") format("woff2");
+    }
+
+    :root {
+      --ioi-blue: #004d79;
+      --ioi-blue-2: #065989;
+      --ioi-gold: #d2aa7b;
+      --ink: #243044;
+      --muted: #617086;
+      --paper: #ffffff;
+      --soft: #f5f8fb;
+      --line: #dce5ef;
+      --green: #18794e;
+      --green-bg: #e7f7ed;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: "Open Sans Local", "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--ioi-blue);
+      font-weight: 700;
+    }
+
+    header {
+      background: var(--ioi-blue-2);
+      color: white;
+      border-bottom: 4px solid var(--ioi-gold);
+    }
+
+    .nav,
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      background: white;
+      border-radius: 9px;
+      padding: 6px;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 7px 12px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+    }
+
+    .page-title {
+      background:
+        linear-gradient(135deg, rgba(0, 77, 121, 0.96), rgba(6, 89, 137, 0.88)),
+        radial-gradient(circle at 80% 20%, rgba(210, 170, 123, 0.54), transparent 32%);
+      color: white;
+      padding: 32px 0 64px;
+    }
+
+    .page-title .wrap {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 1);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.1rem;
+    }
+
+    main {
+      margin-top: -28px;
+      padding-bottom: 64px;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(24, 45, 72, 0.07);
+    }
+
+    section + section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--ioi-blue);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 14px 1.25rem;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.32rem 0;
+    }
+
+    code {
+      background: #eef3f8;
+      border-radius: 4px;
+      padding: 0.12em 0.34em;
+      font-size: 0.95em;
+    }
+
+    .changed {
+      background: #bbf7d0;
+      border-radius: 3px;
+      color: inherit;
+      padding: 0.02em 0.24em;
+    }
+
+    .removed {
+      background: #fecaca;
+      border-radius: 3px;
+      color: inherit;
+      padding: 0.02em 0.24em;
+      text-decoration: line-through;
+    }
+
+    .changed-box {
+      background: var(--green-bg);
+      border-left: 4px solid var(--green);
+      border-radius: 6px;
+      color: #145a3d;
+      padding: 13px 15px;
+    }
+
+    .source-note {
+      margin: 22px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../index.html">
+        <img src="../ioi2026-logo.png" alt="IOI 2026 Logo">
+        <span>IOI 2026 Uzbekistan</span>
+      </a>
+      <div class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="../manual.html">Manual</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-title">
+    <div class="wrap">
+      <p class="kicker">Contest rules</p>
+      <h1>IOI 2026 Contest Rules</h1>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>Contest Rules</h2>
+      <p>This document may be revised to address omissions or inconsistencies, but will not change substantially.</p>
+      <p class="changed">Parts in green indicate changes to the rules compared to the previous edition.</p>
+      <p>Delegation Leaders have the responsibility to ensure that all members of their delegation fully understand these rules and abide by them.</p>
+      <p>For additional documents regulating IOI, please refer to:</p>
+      <ul>
+        <li><a href="https://ioinformatics.org/page/regulations/9">IOI regulations</a></li>
+        <li><a href="https://ioinformatics.org/page/syllabus/12">IOI syllabus</a></li>
+        <li><a href="https://ioinformatics.org/page/code-of-conduct/47">IOI Code of Conduct</a></li>
+        <li>Competition Equipment (to be announced)</li>
+        <li>Grading environment (to be announced)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Competition Schedule</h2>
+      <p>There will be two competition days. On each day contestants will be given three tasks to complete in 5 hours.</p>
+      <p>There will be a 2 hour Practice Competition prior to the first competition day, to familiarize all contestants with the grading system. The tasks used in the Practice Competition will be published before the IOI. Contestants may bring printed solutions to these tasks, on paper only, during the Practice Competition.</p>
+    </section>
+
+    <section>
+      <h2>Grading System</h2>
+      <p>Grading and evaluation take place on the grading system, which provides a similar execution environment for every solution submission. The workstations have network access to the grading system.</p>
+      <p>Grading workstations will have similar hardware to contestant workstations. However, due to differences in software configurations, an identical execution environment between contestant and grading workstations is not guaranteed.</p>
+    </section>
+
+    <section>
+      <h2>Tasks</h2>
+      <p>Each contestant will receive the official English version of the tasks in an envelope on each contest day. The team leaders can translate the task statements for contestants and the translated statements will be provided in the envelope with the English version. Each contestant will have online access to the official English version of the task statements and all translations in electronic format (PDF).</p>
+      <p>Each task is divided into some number of subtasks, each worth a portion of the total points. Each subtask is either a programming subtask (the solution is source code) or an output-only subtask (the solution is a set of output files).</p>
+      <p>For each programming subtask, time and memory limits are specified. In general, time and memory limits are generous (for example, double those required by the expected solution). The memory limit is on the overall memory usage including executable code size, stack, dynamically allocated memory, etc.</p>
+      <p>For each task, the contestants can download a zip file from the grading system. For tasks containing programming subtasks, the file contains interface files, a sample grading program, and an example implementation of a required source file. This example implementation shows an example of using the task's interface but does not solve the problem. The sample grader provided on the workstation is not the same as the official grader used by the grading system.</p>
+    </section>
+
+    <section>
+      <h2>Solutions and submissions</h2>
+      <p>Contestants submit their solutions for tasks by using the grading system. Depending on the task, a submission may consist of a single C++ source file, one or more output files, or both.</p>
+      <p>Unless stated otherwise, the following restrictions apply to the submissions:</p>
+      <p>For C++ source files:</p>
+      <ul>
+        <li>Each submitted solution must be written in C++ and its size must not exceed 50 KiB. Compilation of the program by the evaluation server must finish in at most 10 seconds and use at most 512 MiB of memory.</li>
+        <li>Submissions must not perform explicit input and output operations; instead, data must only be exchanged through the interfaces specified in the task statement. In particular, direct access to any file, including standard input or standard output, is forbidden (however, writing to standard error is allowed).</li>
+        <li>Contestants may submit a solution to each task at most once per minute. This restriction does not apply in the last 15 minutes of the contest round.</li>
+        <li>Contestants may perform at most 50 submissions for each task.</li>
+      </ul>
+      <p>Using multiple threads is allowed. Note that the running time of the submission will be counted as a sum of running times of all threads. E.g., if there were two threads running for 5 seconds each (thus, the program finishes in 5 seconds), then the running time of the submission will be 10 seconds.</p>
+      <p>The technical committee may provide alternative methods for submitting the solutions for grading.</p>
+    </section>
+
+    <section>
+      <h2>Scoring</h2>
+      <p>The scores for each task will be calculated as follows:</p>
+      <ul>
+        <li>Each subtask consists of some number of test cases. Unless specified otherwise, in each programming subtask the submission is executed once per test case.</li>
+        <li>For each submission, the score for each test case is calculated based on the program execution and/or the output.</li>
+        <li>The program execution on each test case is subject to time and memory limits, which are given in the grading system. If the program exceeds these limits, it receives 0 points for this test case.</li>
+        <li class="changed">The score for each subtask is rounded to the nearest 2 decimal places.</li>
+        <li>For each submission, the score for each subtask is the minimum of the scores for the test cases in the subtask unless otherwise stated in the task statement.</li>
+        <li>The final score for each subtask is the maximum of the scores for this subtask across all submissions.</li>
+        <li class="removed">The final score for each task is the sum of the scores for its subtasks. This sum is rounded to the nearest 2 decimal places.</li>
+      </ul>
+      <p>For example, consider a contestant who made two submissions on a task that contains two subtasks. If the first submitted solution got 30 points for the first subtask and 10 points for the second subtask, and the second solution got 0 points for the first subtask and 40 points for the second subtask, then the final score for this task will be 70.</p>
+      <p>The maximum score for each task is 100 points.</p>
+    </section>
+
+    <section>
+      <h2>Feedback</h2>
+      <p>Contestants can use the grading system to view the status of their submissions and get a short report on the compilation results of their source code.</p>
+      <p>For every submission, the grading system reports the score for each subtask. If a subtask is not fully solved, the grading system gives a feedback only for the first test case among the lowest scored test cases in the subtask. The feedback includes the test case number and one of the following reasons:</p>
+      <ul>
+        <li>Output is correct</li>
+        <li>Output isn't correct</li>
+        <li>Output is partially correct</li>
+        <li>Execution timed out</li>
+        <li>Execution killed (could be triggered by violating memory limits)</li>
+        <li>Execution failed because the return code was nonzero</li>
+        <li>Protocol Violation</li>
+      </ul>
+      <p>A contestant may receive a "Protocol Violation" feedback if their program does not follow the correct protocol described in the problem statement. Some possible reasons for a submission receiving this feedback include:</p>
+      <ul>
+        <li>Reading from standard input or printing to standard output</li>
+        <li>Calling exit()</li>
+      </ul>
+      <p>However, it should be noted that submissions that exhibit the above behavior may not always result in "Protocol Violation" feedback and the list above is also not exhaustive.</p>
+      <p>Unless otherwise stated, the "Output is partially correct" feedback is displayed when a submission receives partial score for a subtask with partial scoring.</p>
+      <p>The test cases are ordered the same way in all the submissions. No information on the actual test cases, the output produced by the contestant solution, or any other execution details will be given to the contestant.</p>
+      <p>It should be noted that the score reported in the feedback is only provisional. There are two ways how this score may change after it has been reported to the contestant:</p>
+      <ul>
+        <li>Due to a successful appeal after the contest.</li>
+        <li>In some cases, the contestants' submissions may be re-evaluated. This re-evaluation may sometimes lead to a different total score (e.g. if a solution behaves nondeterministically or runs very close to the time or memory limit). In such cases, the final score for the submission is the score for its latest re-evaluation. This change in scoring cannot be appealed. Note that the final score for each subtask is still the maximum score over all submissions.</li>
+      </ul>
+      <p>In the event of an error with the test data, the Scientific Committee will attempt to, but is not obligated to follow the following process:</p>
+      <ul>
+        <li>Every attempt will be made to fix test data and regrade all solutions as quickly as possible.</li>
+        <li>Additional test data may be added only when the grading data significantly differs from the intention of the Scientific Committee from before the contest, e.g., the test data prepared before the contest was not properly uploaded to the grading system.</li>
+        <li>Late detections of issues, especially during the last 2 hours of the contest, may be grounds for extending the length of the contest.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Quarantine</h2>
+      <p>In order to protect the confidentiality of the tasks, all direct and indirect contacts and communication between contestants and delegation leaders are prohibited between the moment where tasks for a competition day are presented to the members of the GA and the end of the competition on the following day.</p>
+      <p>During this period the contestants are not allowed to communicate by any means, direct or indirect, with anyone who knows the tasks (except for the usual communication with the Scientific Committee during the contest).</p>
+      <p>Before each competition day ends, GA meeting attendees should not share task-related information with anyone who does not know the competition tasks without an explicit approval from the Scientific Committee. The contestants, the GA members and anyone else who has had access to the tasks must obey any instructions which restrict their access to specific parts of the IOI venue.</p>
+      <p>If a contestant violates the quarantine, the contestant can be subject to disqualification. If some other person associated with a national delegation violates the quarantine, then all contestants of that delegation may be subject to disqualification.</p>
+    </section>
+
+    <section>
+      <h2>Supplies</h2>
+      <p>In the competition room the following items will be provided:</p>
+      <ul>
+        <li>blank paper,</li>
+        <li>writing tools,</li>
+        <li>Clarification Request Forms,</li>
+        <li>snacks,</li>
+        <li>water.</li>
+      </ul>
+      <p>On the competition days, contestants may bring the following items into the competition room:</p>
+      <ul>
+        <li>clothing,</li>
+        <li>their ID badge (provided by the IOI organizing committee),</li>
+        <li>reasonable jewelry.</li>
+      </ul>
+      <p>Contestants may request to use additional items, provided that these items cannot transmit or store any data in electronic, printed, or other written format (other than their designed purpose). The following items are among those that may be requested:</p>
+      <ul>
+        <li>additional writing utensils,</li>
+        <li>USB keyboards and mice (with no wireless communication and no programmable functions whose configuration is retained when unplugged),</li>
+        <li>mouse pads,</li>
+        <li>small mascots,</li>
+        <li>English dictionaries,</li>
+        <li>additional snacks,</li>
+        <li>medicine and medical equipment,</li>
+        <li>earplugs and earmuffs.</li>
+      </ul>
+      <p>Bringing these additional items requires prior approval from the Technical Committee. A contestant must submit these items by leaving them in a designated container provided by the technical committee on their workstation during the Practice Competition.</p>
+      <p>As soon as the practice competition is over, the technical committee will check the submitted items. If there are rejected items, the delegation leader of the contestant will be notified and they are allowed to resubmit replacements. The approved items will be kept by the technical committee and given to the contestants at the start of each competition day.</p>
+      <p>However, during the contest, the technical committee may decide to remove any of these approved items if they deem that the item's usage is disruptive to other contestants during the contest.</p>
+      <p class="changed-box">In emergency situations, last-minute item submission at the competition checkpoint before each competition day is allowed. Any item presented, other than those explicitly approved (ID badge, clothing, and jewelry), must undergo an immediate review by a committee member. Any item requiring non-trivial technical inspection, including all keyboards and mice, shall be rejected without consideration. Note that the committees cannot guarantee the acceptance of items that would otherwise be permitted under the standard submission procedure.</p>
+      <p>After the first competition day is over, a contestant must leave the submitted items in the same designated container provided by the technical committee on their workstation if they want to continue using these items on the second competition day. Contestants are allowed to submit new items or replacements during the time of analysis for the first competition day, to use them on the second competition day.</p>
+      <p>At the end of the practice contest and the first competition day, any unsubmitted items left on the contestants' workstation will be cleared and not returned to the contestants. Hence, contestants should take all items with them at the end of the practice contest and each competition day.</p>
+      <p>At the end of the second competition day, contestants should take all the submitted items with them.</p>
+      <p>Any attempts to bring any other items unlisted above into the competition rooms are considered cheating. In particular, the following items are strictly prohibited:</p>
+      <ul>
+        <li>any computing equipment (e.g. calculators, laptops, tablets),</li>
+        <li>any keyboards or mice, with wireless communication or programmable functions whose configuration is retained when unplugged,</li>
+        <li>any books, manuals, written or printed materials,</li>
+        <li>any data storage medium (e.g., CD-ROMs, USB drives, flash cards, micro-drives),</li>
+        <li>any communication devices (e.g., mobile phones, radios of any sort, Bluetooth-enabled devices),</li>
+        <li>watches of any type,</li>
+        <li>any earphones, headphones, microphones and speakers,</li>
+        <li>backpacks and bags.</li>
+      </ul>
+      <p>Regarding snacks, note that the host organizing committee will provide all contestants with some amount of snacks. In cases when a contestant would still like to bring in snacks, they should make sure that the snacks are not noisy or smelly, and are not disturbing for other contestants in any other way. In case of complaints from other contestants during the contest, the snack might be removed.</p>
+      <p>Any electronic or printed materials provided by the organizers during a competition round may be used by the contestants (e.g., a Users Guide to the Contest System, or any electronic documentation or reference manuals provided in the installed contest environment or on the provided grading system).</p>
+    </section>
+
+    <section>
+      <h2>Starting the Competition</h2>
+      <p>All contestants must wear their ID badges during the competition. Each contestant will have a pre-assigned workstation. Contestants should be in their seats by at least 5 minutes prior to the start of the competition.</p>
+      <p>Contestants must find their assigned computer, sit down, and wait for the competition to begin without touching anything (such as keyboards, mice, pen, or paper).</p>
+    </section>
+
+    <section>
+      <h2>Clarification Requests</h2>
+      <p>During the competition, contestants may ask questions concerning competition tasks, rules and/or grading. Clarification Requests may be expressed either in English or the contestant's preferred language. If required, delegation leaders will translate the Clarification Requests into English after they are submitted and before they are being processed by the Scientific Committee.</p>
+      <p>The questions should be submitted using the grading system whenever possible. If this option is not available, either because typing in the contestant's preferred language is not supported, or due to technical issues, contestants can write the question on a printed Clarification Request Form.</p>
+      <p>Contestants will receive a reply from the Scientific Committee via the grading system, or in writing on the submitted Clarification Request Form.</p>
+      <p>Questions regarding the competition tasks should be phrased, so that a yes/no answer will have a clear meaning. Contestants should not ask negative questions such as "Isn't it true that...?" because the yes/no answer to such questions may cause confusion depending on the native language of the contestants. Instead, positive questions of the form "Is it true that...?" are recommended.</p>
+      <p>Questions regarding the competition tasks will be answered with one of the following:</p>
+      <ul>
+        <li>"Yes"</li>
+        <li>"No"</li>
+        <li>"No Comment/Please refer to task statement"</li>
+        <li>"Invalid Question (not a Yes/No Question)" - The question is most likely not phrased so that a yes/no answer would be meaningful. The contestant is encouraged to rephrase the question.</li>
+      </ul>
+      <p>As a general rule, the Scientific Committee only answers "Yes" or "No", when the corresponding part of the task statement is deemed incorrect, ambiguous or potentially confusing.</p>
+      <p>The "No Comment/Please refer to task statement" answer is commonly given in the following situations:</p>
+      <ul>
+        <li>The answer to the question clearly follows from the task statement (either directly or indirectly).</li>
+        <li>Determining the answer to the question is part of the contestant's task.</li>
+        <li>The answer to the question is not intended to be inferred from the task statement, and so the contestant should not assume either a positive or a negative answer. For example, when the task statement talks about a sequence, the contestant should not assume that the elements of the sequence are distinct, unless this is stated in the task, either directly or indirectly.</li>
+      </ul>
+      <p>Additional elaboration of the answer may be provided if the Scientific Committee deems it necessary.</p>
+    </section>
+
+    <section>
+      <h2>Assistance Requests</h2>
+      <p>Requests not concerning competition tasks, rules and/or grading would be considered as Assistance Requests. These Assistance Requests should be made by raising a colored card available on the contestant's desk depending on the type of the request. For any other Assistance Requests, contestants should raise their hand to call the support staff for assistance.</p>
+      <p>The staff members will deliver Clarification Request Forms, help locate toilets and refreshments, and assist with computer and network problems. They will not answer questions about the competition tasks.</p>
+      <p>Contestants should not:</p>
+      <ul>
+        <li>attempt to fix, debug or even check for computer or network problems themselves; instead, they should ask for assistance and continue working on the tasks,</li>
+        <li>leave their seats until allowed to do so by the support staff.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Ending the Competition</h2>
+      <p>Three warnings will be given at 15 minutes, 5 minutes, and 1 minute before the end of the competition. Each warning will be given by an audible signal. The end of the competition will be announced both verbally and by an audible signal. At the announcement ending the competition, contestants must immediately stop working (unless they request extra time, please see the next paragraph) and wait quietly at their desks without touching the computers or anything on their desks. An additional announcement will be made instructing them to leave their tables and exit the competition room.</p>
+      <p>If a contestant thinks that they should be given extra time for the competition, they should send a Clarification Request either through the contest system or via a Clarification Request Form as early as possible. They should not leave their desk or talk to other contestants nor team leaders after the contest ends and should continue to work. The Scientific Committee will then decide whether to award the extra time, and inform the contestant of the decision as early as possible. If some amount of extra time is granted, all submissions that are made during contest time + extra time would be graded.</p>
+      <p>However, note that the following issues will not be accepted as grounds for requesting for extra time:</p>
+      <ul>
+        <li>Issues arising from the usage of programming tools, in particular IDEs (e.g. VS Code and Eclipse) and debuggers. Contestants should be competent in the usage of the tools they decide to use. However, members of the technical committee may provide assistance.</li>
+        <li>Issues that are resolved within 10 minutes, unless they happen less than 10 minutes before the end of the contest.</li>
+        <li>The contestant loses a significant amount of time when trying to solve technical issues by themselves.</li>
+        <li>Instances where the contestant did not inform any support staff or made any clarification request on the issue at all.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Cheating</h2>
+      <p>Violating any of the following rules is considered cheating, and may result in disqualification:</p>
+      <ul>
+        <li>contestants must use only the workstation and account assigned to them on each competition day;</li>
+        <li>contestants must not try to tamper with or compromise the grading system;</li>
+        <li>contestants must not attempt to gain access to root or any account other than the one assigned to them;</li>
+        <li>contestants must not attempt to store information in any part of the file system other than the home directory for their account or the /tmp directory;</li>
+        <li>contestants must not touch any workstation other than the one assigned to them;</li>
+        <li>contestants must not attempt to access any machine on the network or the Internet, other than to access the contest system for usual purposes (e.g. submitting tasks, viewing submission results, downloading sample data, submitting Clarification Requests), and call for the support staff through the system; even running a single "ping" command is strictly prohibited and may lead to disqualification;</li>
+        <li>contestants must not attempt to reboot or alter the boot sequence of any workstation;</li>
+        <li>contestants must not communicate with other people during the competition, other than the support staff, and/or Scientific/Technical Committee members;</li>
+        <li>contestants must not reverse engineer the test data in order to solve the problems in highly test-data-dependent manners. One example of such behavior is using the feedback system to extract the test data and then applying this knowledge to build solutions adapted to the specific test cases in the grading system. This behavior would be considered cheating only if a contestant submits a solution that would solve significantly fewer test cases correctly if the test data were replaced by an equivalent set of test cases (e.g., one generated with a different random seed).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Appeal Process</h2>
+      <p>The test cases used for grading will be made available electronically in the competition area during the scheduled time for analysis after each competition. Contestants and team leaders may use the contestant's workstations to verify that the grades are assessed correctly.</p>
+      <p>A Team Leader may file an appeal by completing an Appeal Form, and submitting it to the Scientific Committee at least 60 minutes prior to the final GA meeting of that competition day. The GA will be informed of where Appeal Forms can be collected, and where they can submit them to the Scientific Committee. Every appeal will be reviewed by the Scientific Committee and the team leader will be notified of the committee's decision. All appeals and their resolution will be summarized at the final GA meeting of that competition day.</p>
+      <p>In the event that every submission of a task should be re-graded and re-scored as a consequence of an accepted appeal, note that re-scoring may result in a higher or lower score for any contestant. Should anyone's score change after grading results have been published, new results will be published again. Score changes resulting from this are not appealable.</p>
+    </section>
+  </main>
+</body>
+
+</html>
