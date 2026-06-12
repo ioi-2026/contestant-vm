@@ -36,8 +36,9 @@ $wget -O "$cache/sublime-text.deb" "https://download.sublimetext.com/sublime-tex
 dpkg -i "$cache/sublime-text.deb"
 
 # Install Eclipse
-$wget -O "$cache/eclipse-cpp.tar.gz" "https://mirror.dkm.cz/eclipse/technology/epp/downloads/release/${ECLIPSE_VERSION}/R/eclipse-cpp-${ECLIPSE_VERSION}-R-linux-gtk-x86_64.tar.gz"
+$wget -O "$cache/eclipse-cpp.tar.gz" "https://archive.eclipse.org/technology/epp/downloads/release/${ECLIPSE_VERSION}/R/eclipse-cpp-${ECLIPSE_VERSION}-R-linux-gtk-x86_64.tar.gz"
 tar zxf "$cache/eclipse-cpp.tar.gz" -C /opt
+# hardcoded
 cp /opt/eclipse/plugins/org.eclipse.epp.package.cpp_4.35.0.20250306-0811/eclipse256.png /usr/share/pixmaps/eclipse.png
 cat - <<EOM > /usr/share/applications/eclipse.desktop
 [Desktop Entry]

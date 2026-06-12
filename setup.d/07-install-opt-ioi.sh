@@ -17,7 +17,7 @@ mkdir -p /opt/ioi/store/submissions
 mkdir -p /opt/ioi/config/ssh
 
 # Add default timezone
-echo "America/La_Paz" > /opt/ioi/config/timezone
+echo "Asia/Tashkent" > /opt/ioi/config/timezone
 
 # Default to enable screensaver lock
 touch /opt/ioi/config/screenlock

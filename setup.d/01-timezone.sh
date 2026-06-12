@@ -5,7 +5,7 @@ set -e
 
 #Bolvia time
 
-timedatectl set-timezone America/La_Paz
+timedatectl set-timezone Asia/Tashkent
 
 #vmware-toolbox-cmd timesync enable
 ##hwclock -w
