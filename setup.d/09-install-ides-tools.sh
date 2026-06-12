@@ -4,13 +4,15 @@ set -x
 set -e
 
 ATOM_VERSION="1.60.0"
-ECLIPSE_VERSION="2025-03"
-NVIM_VERSION="v0.11.0"
-SUBLIME_VERSION="4192"
-VSCODE_CPPT_VERSION="1.24.5"
-VSCODE_VIM_VERSION="1.29.0"
-VSCODE_CLANGD_VERSION="0.1.33"
-VSCODE_INTELLIJ_VERSION="1.7.3"
+ECLIPSE_VERSION="2026-06"
+NVIM_VERSION="v0.12.3"
+SUBLIME_VERSION="4200"
+VSCODE_VERSION="1.124.2"
+
+VSCODE_CPPT_VERSION="1.32.2"
+VSCODE_VIM_VERSION="1.32.4"
+VSCODE_CLANGD_VERSION="0.6.0"
+VSCODE_INTELLIJ_VERSION="1.7.7"
 
 apt -y install firefox geany geany-plugin-automark geany-plugin-lineoperations geany-plugin-overview
 
@@ -19,7 +21,7 @@ apt -y install emacs \
 	ddd valgrind ruby python3-pip konsole \
 	cmake python3-matplotlib
 
-$wget -O "$cache/code_stable_amd64.deb" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+$wget -O "$cache/code_stable_amd64.deb" "https://update.code.visualstudio.com/${VSCODE_VERSION}/linux-deb-x64/stable"
 dpkg -i "$cache/code_stable_amd64.deb"
 
 $wget -O "$cache/atom.deb" "https://github.com/atom/atom/releases/download/v${ATOM_VERSION}/atom-amd64.deb"
@@ -36,10 +38,17 @@ $wget -O "$cache/sublime-text.deb" "https://download.sublimetext.com/sublime-tex
 dpkg -i "$cache/sublime-text.deb"
 
 # Install Eclipse
-$wget -O "$cache/eclipse-cpp.tar.gz" "https://archive.eclipse.org/technology/epp/downloads/release/${ECLIPSE_VERSION}/R/eclipse-cpp-${ECLIPSE_VERSION}-R-linux-gtk-x86_64.tar.gz"
+$wget -O "$cache/eclipse-cpp.tar.gz" "https://download.eclipse.org/technology/epp/downloads/release/${ECLIPSE_VERSION}/R/eclipse-cpp-${ECLIPSE_VERSION}-R-linux-gtk-x86_64.tar.gz"
 tar zxf "$cache/eclipse-cpp.tar.gz" -C /opt
-# hardcoded
-cp /opt/eclipse/plugins/org.eclipse.epp.package.cpp_4.35.0.20250306-0811/eclipse256.png /usr/share/pixmaps/eclipse.png
+
+# Eclipse plugin directory changes between releases, so do not hardcode the old 2025-03 path.
+ECLIPSE_ICON="$(find /opt/eclipse/plugins -path '*/org.eclipse.epp.package.cpp_*/eclipse256.png' | sort -V | tail -n 1)"
+if [ -z "$ECLIPSE_ICON" ]; then
+	echo "Eclipse icon was not found" >&2
+	exit 1
+fi
+cp "$ECLIPSE_ICON" /usr/share/pixmaps/eclipse.png
+
 cat - <<EOM > /usr/share/applications/eclipse.desktop
 [Desktop Entry]
 Name=Eclipse
