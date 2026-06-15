@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grading Environment - IOI 2026 Uzbekistan</title>
+  <style>
+    @font-face {
+      font-family: "Open Sans Local";
+      font-style: normal;
+      font-weight: 400;
+      src: url("fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-regular.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Open Sans Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-700.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 600;
+      src: url("fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-600.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-700.woff2") format("woff2");
+    }
+
+    :root {
+      --blue: #004d79;
+      --blue-2: #065989;
+      --gold: #d2aa7b;
+      --ink: #223553;
+      --muted: #63758f;
+      --line: #e4ebf2;
+      --soft: #f5f8fb;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: "Open Sans Local", "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      background: var(--blue-2);
+      color: white;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .nav,
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      background: white;
+      border-radius: 9px;
+      padding: 6px;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 7px 12px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+    }
+
+    .page-title {
+      background:
+        linear-gradient(135deg, rgba(0, 77, 121, 0.96), rgba(6, 89, 137, 0.88)),
+        radial-gradient(circle at 80% 20%, rgba(210, 170, 123, 0.54), transparent 32%);
+      color: white;
+      padding: 32px 0 64px;
+    }
+
+    .page-title .wrap {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 1);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    main {
+      margin-top: -28px;
+      padding-bottom: 64px;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(24, 45, 72, 0.07);
+    }
+
+    section + section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 14px 1.25rem;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.32rem 0;
+    }
+
+    code {
+      background: #eef3f8;
+      border-radius: 4px;
+      padding: 0.12em 0.34em;
+      font-size: 0.95em;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #f3f7fb;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+    }
+
+    .note {
+      background: #f7fafc;
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      padding: 13px 15px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../index.html">
+        <img src="../ioi2026-logo.png" alt="IOI 2026 Logo">
+        <span>IOI 2026 Uzbekistan</span>
+      </a>
+      <div class="navlinks">
+        <a href="../index.html">Home</a>
+        <a href="../manual.html">Manual</a>
+        <a href="contest-rules.html">Rules</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-title">
+    <div class="wrap">
+      <p class="kicker">Contest</p>
+      <h1>Grading Environment</h1>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>Grading System</h2>
+      <p>The contest will use CMS (Contest Management System) as the grading system.</p>
+      <p>Grading is performed in a Linux environment configured by the Technical Committee. Contestant machines are intended to provide a similar local development environment, but an identical execution environment between contestant and grading workstations is not guaranteed.</p>
+      <p>Submitted C++ source files are compiled using GCC 13.3 or newer, matching the compiler family installed on contestant machines.</p>
+      <p class="note">Recent GCC versions may consume excessive resources when compiling code that allocates dynamic data structures with a large constant size. This may cause compilation to exceed resource limits and fail.</p>
+      <p>The exact commands used for compilation will be shown on the grading system. With the exception of certain task types, the compilation command will generally be of the following format:</p>
+      <pre>/usr/bin/g++ -DEVAL -std=gnu++20 -O2 -pipe -static -s -o task grader.cpp task.cpp</pre>
+      <p class="note">The compilation scripts provided to contestants use a similar compilation command, except that they do not include <code>-DEVAL</code> and use <code>-g</code> instead of <code>-s</code>.</p>
+    </section>
+
+    <section>
+      <h2>Protocol Violation</h2>
+      <p>A contestant may receive a <code>Protocol Violation</code> feedback if their program does not follow the correct protocol described in the problem statement. This typically happens in the following situations:</p>
+      <ul>
+        <li>Reading from standard input or printing to standard output.</li>
+        <li>Calling <code>exit()</code>.</li>
+      </ul>
+      <p>Other violations of the protocol, particularly those involving grader procedure calls, should generally result in the solution being judged as incorrect. CMS may report these as:</p>
+      <ul>
+        <li><code>Output isn't correct: Invalid argument</code> - a grader procedure was called with invalid arguments.</li>
+        <li><code>Output isn't correct: Too many calls</code> - a grader procedure was called too many times.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Output-Only Subtasks</h2>
+      <p>If a task includes output-only subtasks, a single submission may contain:</p>
+      <ul>
+        <li>At most one C++ source file.</li>
+        <li>Any number of output files, with at most one file per output-only subtask.</li>
+      </ul>
+      <p>Submissions are evaluated according to the following rules:</p>
+      <ul>
+        <li>For each programming subtask, the C++ source file, if provided, will be compiled and graded. If no source file is included, the score for that subtask will be 0.</li>
+        <li>For each output-only subtask, an included output file specific to that subtask will be graded. Otherwise, if a C++ source file is present, the compiled program will be executed and its output will be graded for that subtask.</li>
+      </ul>
+      <p class="note">Program execution is subject to the time and memory limits given in the grading system, regardless of the subtask type.</p>
+    </section>
+
+    <section>
+      <h2>Task Attachments</h2>
+      <p>There is an attachment package that you can download from the contest system, containing:</p>
+      <ul>
+        <li>Sample graders.</li>
+        <li>Sample implementations.</li>
+        <li>Example test cases.</li>
+        <li>Compile, run, and submit scripts.</li>
+      </ul>
+      <p>Each task has a subtask with index 0 which is worth 0 points. Unless specified otherwise in the problem statement, the test cases for this subtask are the same as the sample test cases included in the task statement and in the downloadable attachment.</p>
+      <p>When you test your code locally, use the scripts from the attachment packages. The compiler option is <code>-std=gnu++20</code>.</p>
+    </section>
+
+    <section>
+      <h2>Sample Graders</h2>
+      <p>Sample graders provide a basic mechanism for running your solution. In many cases they are simpler than the graders used to judge your solution.</p>
+      <p>When testing a program with the sample grader, your input should match the format and constraints from the task statement, otherwise unspecified behavior may occur.</p>
+      <p>If a sample grader procedure call violates constraints in the task statement, the sample grader may print an error message and terminate immediately. Unless specified otherwise, the error message is one of the following:</p>
+      <ul>
+        <li><code>Invalid argument</code> - a grader procedure was called with arguments which violate a constraint.</li>
+        <li><code>Too many calls</code> - a grader procedure was called more times than the limit provided in the task statement.</li>
+      </ul>
+      <p>Contestants can inspect the sample grader source code to see what triggers these errors and may modify the sample grader to print more information.</p>
+    </section>
+
+    <section>
+      <h2>Alternative Submission Mechanism</h2>
+      <p>In addition to submitting solutions through the CMS web interface, contestants may also use the <code>submit</code> script included in the task attachment package.</p>
+      <ul>
+        <li>For tasks requiring a single source file, run the script with one argument: the source file to submit.</li>
+        <li>For tasks that allow or require one or more output files, run the script with all files the contestant wants to submit.</li>
+      </ul>
+      <p>The script first attempts to submit the files online via CMS. If the submission is successful, it will appear in the CMS interface with feedback. If it fails, the submission is recorded offline on the contestant's machine.</p>
+      <p>When the contest is over, the scientific committee collects all locally recorded submissions and imports them into CMS in chronological order.</p>
+    </section>
+  </main>
+</body>
+
+</html>

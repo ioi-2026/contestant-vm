@@ -3,114 +3,409 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>IOI 2025</title>
-
-  <!-- Font: Share -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOI 2026 Uzbekistan</title>
   <style>
     @font-face {
-      font-family: 'Share';
+      font-family: "Open Sans Local";
       font-style: normal;
       font-weight: 400;
-      src: local('Share Regular'), local('Share-Regular'),
-        url('fonts/share-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/share-v11-latin-regular.woff2') format('woff2'),
-        url('fonts/share-v11-latin-regular.woff') format('woff'),
-        url('fonts/share-v11-latin-regular.ttf') format('truetype'),
-        url('fonts/share-v11-latin-regular.svg#Share') format('svg');
+      src: url("ioi2026-offline/fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-regular.woff2") format("woff2");
     }
 
-    /* Font: Fira Sans */
     @font-face {
-      font-family: 'Fira Sans';
+      font-family: "Open Sans Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("ioi2026-offline/fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-700.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
       font-style: normal;
       font-weight: 400;
-      src: local('Fira Sans Regular'), local('FiraSans-Regular'),
-        url('fonts/fira-sans-v10-latin-regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/fira-sans-v10-latin-regular.woff2') format('woff2'),
-        url('fonts/fira-sans-v10-latin-regular.woff') format('woff'),
-        url('fonts/fira-sans-v10-latin-regular.ttf') format('truetype'),
-        url('fonts/fira-sans-v10-latin-regular.svg#FiraSans') format('svg');
+      src: url("ioi2026-offline/fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-regular.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 600;
+      src: url("ioi2026-offline/fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-600.woff2") format("woff2");
+    }
+
+    :root {
+      --blue: #004d79;
+      --blue-2: #065989;
+      --blue-soft: #eef6fb;
+      --gold: #d2aa7b;
+      --ink: #223553;
+      --muted: #63758f;
+      --line: #e4ebf2;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Fira Sans', sans-serif;
-      font-size: 100%;
-      line-height: 1.4;
-      -webkit-text-size-adjust: 100%;
       margin: 0;
-      padding: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: "Open Sans Local", "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      overflow: hidden;
     }
 
-    h1 {
-      display: none;
+    a {
+      color: inherit;
     }
 
-    .title,
-    .link {
-      font-family: 'Share', sans-serif;
-      font-weight: bold;
-      text-align: center;
-      font-size: 140%;
-      line-height: 1.2;
-      margin: 1em 0;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.5em 1em;
-      background-color: #EEEEEE;
-      border: 1px solid #333333;
-      border-left-color: #CCCCCC;
-      border-top-color: #CCCCCC;
-      text-decoration: none;
-      font-weight: bold;
-      width: 100%;
-      max-width: 300px;
+    .hero-inner {
+      width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    .logo {
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(0, 77, 121, 0.1), rgba(255, 255, 255, 0) 72%),
+        #fff;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      min-height: clamp(300px, 48vh, 430px);
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+      gap: 0;
+      padding: clamp(28px, 4.8vh, 46px) 0 clamp(28px, 4.8vh, 48px);
       text-align: center;
-      margin-top: 1em;
     }
 
-    .logo img {
-      max-height: 150px;
+    .hero-copy {
+      width: min(920px, 100%);
+      max-width: 920px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
     }
 
-    .container {
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-size: clamp(0.86rem, 1.45vw, 1.04rem);
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-size: clamp(4.1rem, 9.4vw, 6rem);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: clamp(14px, 2.5vh, 22px) 0 0;
+      max-width: none;
+      color: var(--ink);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+    }
+
+    .actions {
       display: flex;
       flex-wrap: wrap;
+      gap: 12px;
       justify-content: center;
-      gap: 1em;
-      padding: 2em;
+      max-width: 620px;
+      margin-inline: auto;
+      margin-top: clamp(18px, 3vh, 24px);
     }
 
-    .container .link {
-      width: 100%;
-      max-width: 300px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 12px;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 700;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      min-width: 210px;
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 14px 28px rgba(0, 77, 121, 0.22);
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid var(--line);
+    }
+
+    .logo-panel {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      min-height: 0;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .logo-panel::before {
+      display: none;
+    }
+
+    .hero-logo {
+      position: relative;
+      width: min(520px, 48vw);
+      filter: none;
+      transform: translateX(34vw);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto clamp(20px, 4vh, 54px);
+    }
+
+    .section-title {
+      border-top: 1px solid var(--line);
+      padding-top: clamp(14px, 2.4vh, 24px);
+      margin-bottom: clamp(12px, 2vh, 18px);
+    }
+
+    .section-title h2 {
+      margin-top: 16px;
+      margin-bottom: 32px;
+      color: var(--blue);
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource {
+      min-height: clamp(122px, 20vh, 160px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: clamp(16px, 2.6vh, 22px);
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(34, 53, 83, 0.07);
+      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+    }
+
+    .resource:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 77, 121, 0.28);
+      box-shadow: 0 18px 38px rgba(34, 53, 83, 0.11);
+    }
+
+    .resource-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-radius: 12px;
+      margin-bottom: clamp(12px, 2vh, 20px);
+    }
+
+    .resource-icon svg {
+      width: 23px;
+      height: 23px;
+      stroke-width: 1.8;
+    }
+
+    .resource-title {
+      margin: 0;
+      color: var(--blue);
+      font-size: 1.08rem;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 700;
+      line-height: 1.22;
+    }
+
+    .resource-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gold);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .resource-action svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 980px) {
+      body {
+        overflow: auto;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 18px;
+        min-height: auto;
+        padding: 36px 0 34px;
+      }
+
+      .hero-copy {
+        max-width: none;
+        text-align: center;
+      }
+
+      .logo-panel {
+        order: -1;
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        pointer-events: auto;
+        min-height: 230px;
+      }
+
+      .logo-panel::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.42) 58%, transparent 59%),
+          linear-gradient(135deg, rgba(210, 170, 123, 0.22), rgba(0, 77, 121, 0.07));
+        box-shadow: 0 28px 70px rgba(34, 53, 83, 0.08);
+      }
+
+      .hero-logo {
+        width: 190px;
+        filter: drop-shadow(0 24px 34px rgba(34, 53, 83, 0.13));
+        transform: none;
+      }
+
+      .resources {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero-inner {
+        padding-top: 28px;
+      }
+
+      .resources {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>IOI 2025</h1>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">International Olympiad in Informatics 2026</p>
+        <h1>Uzbekistan</h1>
+        <p class="subtitle">9-16 August 2026 - Tashkent</p>
+        <div class="actions">
+          <a class="button primary" href="https://cms.ioi2026.uz/">Open CMS</a>
+        </div>
+      </div>
+      <div class="logo-panel" aria-hidden="true">
+        <img class="hero-logo" src="ioi2026-logo.png" alt="">
+      </div>
+    </div>
+  </section>
 
-  <div class="logo">
-    <img src="ioi-website-logo.png" alt="IOI 2025 Logo">
-  </div>
+  <main>
+    <div class="section-title">
+      <h2>Contestant Resources</h2>
+    </div>
 
-  <div class="title">
-    <a class="button" href="https://cms.ioi2025.bo/">CMS Website</a>
-  </div>
-
-  <main class="container">
-    <div class="link"><a href="manual.html">Contestant Machine Manual</a></div>
-    <div class="link"><a href="./ioi2025-offline/contest-rules.html">Contest Rules</a></div>
-    <div class="link"><a href="./ioi2025-offline/grading-environment.html">Grading Environment</a></div>
-
-    <div class="link"><a href="../cppreference/reference/en/index.html">C/C++ Reference</a></div>
-    <div class="link"><a href="../python3.12-doc/html/index.html">Python Documentation</a></div>
+    <section class="resources" aria-label="Contestant resources">
+      <a class="resource" href="manual.html">
+        <span>
+          <span class="resource-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5"/><path d="M8 7h8M8 11h6"/></svg>
+          </span>
+          <p class="resource-title">Contestant Machine Manual</p>
+        </span>
+        <span class="resource-action">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="resource" href="./ioi2026-offline/contest-rules.html">
+        <span>
+          <span class="resource-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          </span>
+          <p class="resource-title">Contest Rules</p>
+        </span>
+        <span class="resource-action">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="resource" href="./ioi2026-offline/grading-environment.html">
+        <span>
+          <span class="resource-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v10H4z"/><path d="M8 21h8M12 15v6"/></svg>
+          </span>
+          <p class="resource-title">Grading Environment</p>
+        </span>
+        <span class="resource-action">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="resource" href="../cppreference/reference/en/index.html">
+        <span>
+          <span class="resource-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m14 5-4 14"/></svg>
+          </span>
+          <p class="resource-title">C/C++ Reference</p>
+        </span>
+        <span class="resource-action">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="resource" href="../python3.12-doc/html/index.html">
+        <span>
+          <span class="resource-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m14 5-4 14"/></svg>
+          </span>
+          <p class="resource-title">Python Documentation</p>
+        </span>
+        <span class="resource-action">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+    </section>
   </main>
 </body>
 

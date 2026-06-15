@@ -3,138 +3,337 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>IOI 2025 - Contestant Machine Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOI 2026 - Contestant Machine Manual</title>
   <style>
     @font-face {
-      font-family: 'Share';
+      font-family: "Open Sans Local";
       font-style: normal;
       font-weight: 400;
-      src: url('fonts/share-v11-latin-regular.eot');
-      src: local('Share Regular'), local('Share-Regular'),
-        url('fonts/share-v11-latin-regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/share-v11-latin-regular.woff2') format('woff2'),
-        url('fonts/share-v11-latin-regular.woff') format('woff'),
-        url('fonts/share-v11-latin-regular.ttf') format('truetype'),
-        url('fonts/share-v11-latin-regular.svg#Share') format('svg');
+      src: url("ioi2026-offline/fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-regular.woff2") format("woff2");
     }
 
     @font-face {
-      font-family: 'Fira Sans';
+      font-family: "Open Sans Local";
       font-style: normal;
-      font-weight: 400;
-      src: url('fonts/fira-sans-v10-latin-regular.eot');
-      src: local('Fira Sans Regular'), local('FiraSans-Regular'),
-        url('fonts/fira-sans-v10-latin-regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/fira-sans-v10-latin-regular.woff2') format('woff2'),
-        url('fonts/fira-sans-v10-latin-regular.woff') format('woff'),
-        url('fonts/fira-sans-v10-latin-regular.ttf') format('truetype'),
-        url('fonts/fira-sans-v10-latin-regular.svg#FiraSans') format('svg');
+      font-weight: 700;
+      src: url("ioi2026-offline/fonts/open-sans-v43-cyrillic_cyrillic-ext_greek_greek-ext_hebrew_latin_latin-ext_math_symbols_vietnamese-700.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 600;
+      src: url("ioi2026-offline/fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-600.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Raleway Local";
+      font-style: normal;
+      font-weight: 700;
+      src: url("ioi2026-offline/fonts/raleway-v36-cyrillic_cyrillic-ext_latin_latin-ext_vietnamese-700.woff2") format("woff2");
+    }
+
+    :root {
+      --blue: #004d79;
+      --blue-2: #065989;
+      --gold: #d2aa7b;
+      --ink: #223553;
+      --muted: #63758f;
+      --line: #e4ebf2;
+      --soft: #f5f8fb;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: "Fira Sans", sans-serif;
-      font-size: 100%;
-      line-height: 1.6;
-      margin: 2rem;
-      color: #333;
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: "Open Sans Local", "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Share', serif;
-      font-weight: bold;
+    a {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    header {
+      background: var(--blue-2);
+      color: white;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .nav,
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      text-decoration: none;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      background: white;
+      border-radius: 9px;
+      padding: 6px;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 7px 12px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+    }
+
+    .page-title {
+      background:
+        linear-gradient(135deg, rgba(0, 77, 121, 0.96), rgba(6, 89, 137, 0.88)),
+        radial-gradient(circle at 80% 20%, rgba(210, 170, 123, 0.54), transparent 32%);
+      color: white;
+      padding: 32px 0 64px;
+    }
+
+    .page-title .wrap {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 1);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    main {
+      margin-top: -28px;
+      padding-bottom: 64px;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(24, 45, 72, 0.07);
+    }
+
+    section + section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
       line-height: 1.2;
-      margin-top: 2rem;
     }
 
     h3 {
-      font-size: 1.2em;
+      margin: 22px 0 10px;
+      color: var(--blue);
+      font-size: 1.2rem;
+      font-family: "Raleway Local", "Open Sans Local", sans-serif;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 14px 1.25rem;
+      padding: 0;
+    }
+
+    li {
+      margin: 0.32rem 0;
     }
 
     code {
-      background-color: #f5f5f5;
-      padding: 0.2em 0.4em;
+      background: #eef3f8;
       border-radius: 4px;
+      padding: 0.12em 0.34em;
       font-size: 0.95em;
     }
 
-    ul, ol {
-      margin-left: 2rem;
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
     }
 
-    img {
-      margin: 1rem 0;
-      max-width: 100%;
+    .screenshots img {
+      width: 100%;
       height: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      .screenshots {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <img src="ioi2026-logo.png" alt="IOI 2026 Logo">
+        <span>IOI 2026 Uzbekistan</span>
+      </a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="ioi2026-offline/contest-rules.html">Rules</a>
+      </div>
+    </nav>
+  </header>
 
-  <h1>Contestant Machine Manual</h1>
-
-  <h2>Local User Account</h2>
-  <p>Each contestant machine has a single local (Ubuntu 24.04) user account: <code>ioi</code>, with the default password <code>ioi</code>.</p>
-  <p><strong>Do not change</strong> the password of the <code>ioi</code> account to avoid confusion.</p>
-
-  <h2>Contestant Account</h2>
-  <p>Upon your first login, and every subsequent login until the process is complete, you will be prompted to run the <strong>IOI Setup</strong>.</p>
-  <p>Use your contestant credentials (currently both username and password are <code>ioi</code>) and wait for a success confirmation.</p>
-
-  <h2>Applications</h2>
-  <p>The sidebar on the left is called the <strong>Launcher</strong>.</p>
-  <p>The top icon launches the <strong>Firefox</strong> web browser, which opens to a homepage containing links to CMS and local documentation.</p>
-  <p>The <strong>Show Applications</strong> icon at the bottom of the Launcher displays all installed applications. Use the search bar to find apps by name, e.g., typing <code>terminal</code> will locate <code>gnome-terminal</code>.</p>
-
-  <h2>Advanced Features</h2>
-
-  <h3>Home Directory Backup (not yet available)</h3>
-  <p>The system supports replication of the home directory using <code>rsync</code> to the IOI 2025 backup server. This feature is disabled by default.</p>
-  <ul>
-    <li>Use <code>ioibackup</code> to trigger a manual sync.</li>
-    <li>Enable automatic backup every 5 minutes using <code>ioiconf setautobackup on</code>.</li>
-    <li>Disable it with <code>ioiconf setautobackup off</code>.</li>
-  </ul>
-  <p>Backups are only available during contest and practice sessions.</p>
-  <p>Note: This is a replication (not archival) system. It uses <code>rsync --delete</code>, which mirrors local deletions on the remote server. Only non-hidden files under 100KB are synced.</p>
-  <p>To recover files, use <code>ioibackup -r</code>. Files will be restored in <code>/tmp/restore</code>.</p>
-
-  <h3>Automatic Screen Lock</h3>
-  <p>The screen locks after 15 minutes of inactivity, with a 30-second warning. To disable this:</p>
-  <ul>
-    <li><code>ioiconf setscreenlock off</code> — disable</li>
-    <li><code>ioiconf setscreenlock on</code> — re-enable</li>
-  </ul>
-
-  <h3>Timezone</h3>
-  <p>The system clock is set to the <strong>America/La_Paz</strong> timezone. All official times from the IOI 2025 organizers use this timezone unless stated otherwise.</p>
-  <p>If you prefer another timezone, use <code>ioiconf settz &lt;timezone&gt;</code>. Example:</p>
-  <p><code>ioiconf settz UTC</code></p>
-  <p>This takes effect at your next login.</p>
-
-  <h3>Importing VSCode Extensions</h3>
-  <p>The C/C++ extension is preinstalled. The following additional extensions are available for manual installation:</p>
-  <ul>
-    <li>VSCode VIM</li>
-    <li>IntelliJ IDEA Keybindings</li>
-    <li>clangd (as an alternative to the C/C++ extension; known to be occasionally unstable)</li>
-  </ul>
-
-  <p>To install:</p>
-  <ol>
-    <li>Open VSCode</li>
-    <li>Click the Extensions icon on the left sidebar</li>
-    <li>Click the "..." menu in the top-right corner</li>
-    <li>Select "Install from VSIX..."</li>
-    <li>Navigate to the <code>extra-vsc-exts</code> bookmark</li>
-    <li>Select the desired extension</li>
-  </ol>
-
-  <div>
-    <img src="manual-import-vsix-1.png" alt="VSIX Import Step 1">
-    <img src="manual-import-vsix-2.png" alt="VSIX Import Step 2">
+  <div class="page-title">
+    <div class="wrap">
+      <p class="kicker">Manual</p>
+      <h1>Contestant Machine Manual</h1>
+    </div>
   </div>
 
+  <main>
+    <section>
+      <h2>Local User Account</h2>
+      <p>Each contestant machine has a single local Ubuntu 24.04 user account: <code>ioi</code>, with the default password <code>ioi</code>.</p>
+      <p><strong>Do not change</strong> the password of the <code>ioi</code> account to avoid confusion.</p>
+    </section>
+
+    <section>
+      <h2>Contestant Account</h2>
+      <p>Upon your first login, and every subsequent login until the process is complete, you will be prompted to run the <strong>IOI Setup</strong>.</p>
+      <p>Use your contestant credentials and wait for a success confirmation.</p>
+    </section>
+
+    <section>
+      <h2>Applications</h2>
+      <p>The sidebar on the left is called the <strong>Launcher</strong>.</p>
+      <p>The top icon launches the <strong>Firefox</strong> web browser, which opens to a homepage containing links to CMS and local documentation.</p>
+      <p>The <strong>Show Applications</strong> icon at the bottom of the Launcher displays all installed applications. Use the search bar to find apps by name, e.g. typing <code>terminal</code> will locate <code>gnome-terminal</code>.</p>
+    </section>
+
+    <section>
+      <h2>Advanced Features</h2>
+
+      <h3>Home Directory Backup</h3>
+      <p>The system supports replication of the home directory using <code>rsync</code> to the IOI 2026 backup server. This feature is disabled by default.</p>
+      <ul>
+        <li>Use <code>ioibackup</code> to trigger a manual sync.</li>
+        <li>Enable automatic backup every 5 minutes using <code>ioiconf setautobackup on</code>.</li>
+        <li>Disable it with <code>ioiconf setautobackup off</code>.</li>
+      </ul>
+      <p>Backups are only available during contest and practice sessions.</p>
+      <p>This is a replication system. It uses <code>rsync --delete</code>, which mirrors local deletions on the remote server. Only non-hidden files under 100KB are synced.</p>
+      <p>To recover files, use <code>ioibackup -r</code>. Files will be restored in <code>/tmp/restore</code>.</p>
+
+      <h3>Automatic Screen Lock</h3>
+      <p>The screen locks after 15 minutes of inactivity, with a 30-second warning. To disable this:</p>
+      <ul>
+        <li><code>ioiconf setscreenlock off</code> - disable</li>
+        <li><code>ioiconf setscreenlock on</code> - re-enable</li>
+      </ul>
+
+      <h3>Timezone</h3>
+      <p>The system clock is set to the <strong>Asia/Tashkent</strong> timezone. All official times from the IOI 2026 organizers use this timezone unless stated otherwise.</p>
+      <p>If you prefer another timezone, use <code>ioiconf settz &lt;timezone&gt;</code>. Example:</p>
+      <p><code>ioiconf settz UTC</code></p>
+      <p>This takes effect at your next login.</p>
+    </section>
+
+    <section>
+      <h2>Importing VSCode Extensions</h2>
+      <p>The C/C++ extension is preinstalled. The following additional extensions are available for manual installation:</p>
+      <ul>
+        <li>VSCode VIM</li>
+        <li>IntelliJ IDEA Keybindings</li>
+        <li>clangd</li>
+      </ul>
+
+      <ol>
+        <li>Open VSCode.</li>
+        <li>Click the Extensions icon on the left sidebar.</li>
+        <li>Click the "..." menu in the top-right corner.</li>
+        <li>Select "Install from VSIX...".</li>
+        <li>Navigate to the <code>extra-vsc-exts</code> bookmark.</li>
+        <li>Select the desired extension.</li>
+      </ol>
+
+      <div class="screenshots">
+        <img src="manual-import-vsix-1.png" alt="VSIX Import Step 1">
+        <img src="manual-import-vsix-2.png" alt="VSIX Import Step 2">
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
