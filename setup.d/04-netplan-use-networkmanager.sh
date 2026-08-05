@@ -12,5 +12,9 @@ EOF
 netplan generate
 netplan apply
 
-systemctl disable systemd-networkd-wait-online.service
-systemctl enable NetworkManager-wait-online.service
+# Contestant workstations must not delay boot while waiting for a network.
+# Mask both implementations so network-online.target cannot start either one.
+systemctl disable systemd-networkd-wait-online.service || true
+systemctl mask systemd-networkd-wait-online.service || true
+systemctl disable NetworkManager-wait-online.service || true
+systemctl mask NetworkManager-wait-online.service || true
