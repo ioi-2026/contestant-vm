@@ -245,85 +245,105 @@
   <div class="page-title">
     <div class="wrap">
       <p class="kicker">Contest</p>
-      <h1>Grading Environment</h1>
+      <h1>IOI 2026 Grading Environment</h1>
     </div>
   </div>
 
   <main>
     <section>
       <h2>Grading System</h2>
-      <p>The contest will use CMS (Contest Management System) as the grading system.</p>
-      <p>Grading is performed in a Linux environment configured by the Technical Committee. Contestant machines are intended to provide a similar local development environment, but an identical execution environment between contestant and grading workstations is not guaranteed.</p>
-      <p>Submitted C++ source files are compiled using GCC 13.3 or newer, matching the compiler family installed on contestant machines.</p>
-      <p class="note">Recent GCC versions may consume excessive resources when compiling code that allocates dynamic data structures with a large constant size. This may cause compilation to exceed resource limits and fail.</p>
-      <p>The exact commands used for compilation will be shown on the grading system. With the exception of certain task types, the compilation command will generally be of the following format:</p>
+      <p>All submissions at IOI 2026 will be evaluated through CMS (Contest Management System).</p>
+      <p>Grading will take place on dedicated competition machines with the following configuration:</p>
+      <ul>
+        <li>CPU: Intel Core Ultra 5 225U</li>
+        <li>RAM: 16GB DDR5</li>
+        <li>Storage: 512GB PCIe NVMe SSD</li>
+      </ul>
+      <p class="note"><strong>Note.</strong> The grading machines run the same hardware as the contestant workstations, but with Turbo Boost, Hyper-Threading, and CPU frequency scaling switched off. As a result, execution times reported by CMS may not exactly match what contestants observe when testing locally.</p>
+      <p>Contestants' C++ submissions are compiled on Linux using GCC version 13.3 or later &ndash; matching the compiler installed on the contestant machines themselves.</p>
+      <p class="note"><strong>Note.</strong> Newer GCC releases can sometimes use unexpectedly large amounts of memory or time when compiling code that declares large fixed-size dynamic containers (for example, a <code>vector</code> sized by a big constant). If this happens, compilation may hit the resource limit and fail.</p>
+      <p>CMS will display the precise compilation command used for each submission. For most task types, it follows this pattern:</p>
       <pre>/usr/bin/g++ -DEVAL -std=gnu++20 -O2 -pipe -static -s -o task grader.cpp task.cpp</pre>
-      <p class="note">The compilation scripts provided to contestants use a similar compilation command, except that they do not include <code>-DEVAL</code> and use <code>-g</code> instead of <code>-s</code>.</p>
+      <p class="note"><strong>Note.</strong> The compile scripts given to contestants in their local packages use nearly the same command &ndash; the difference is that they omit <code>-DEVAL</code>, include <code>-Wall</code>, and use <code>-g</code> (debug symbols) in place of <code>-s</code> (strip symbols).</p>
     </section>
 
     <section>
-      <h2>Protocol Violation</h2>
-      <p>A contestant may receive a <code>Protocol Violation</code> feedback if their program does not follow the correct protocol described in the problem statement. This typically happens in the following situations:</p>
+      <h2>Protocol Violations</h2>
+      <p>CMS may flag a submission with a <code>Protocol Violation</code> verdict when a program doesn't interact with the grader the way the task statement requires. Common triggers include:</p>
       <ul>
-        <li>Reading from standard input or printing to standard output.</li>
+        <li>Reading directly from standard input or writing to standard output when this isn't permitted.</li>
         <li>Calling <code>exit()</code>.</li>
       </ul>
-      <p>Other violations of the protocol, particularly those involving grader procedure calls, should generally result in the solution being judged as incorrect. CMS may report these as:</p>
+      <p>Other protocol mistakes &ndash; especially incorrect calls to grader functions &ndash; are usually treated as a wrong answer rather than a protocol violation, and will appear in CMS as one of:</p>
       <ul>
-        <li><code>Output isn't correct: Invalid argument</code> - a grader procedure was called with invalid arguments.</li>
-        <li><code>Output isn't correct: Too many calls</code> - a grader procedure was called too many times.</li>
+        <li><code>Output isn't correct: Invalid argument</code> &ndash; a grader function was called with arguments that do not satisfy the task's constraints.</li>
+        <li><code>Output isn't correct: Too many calls</code> &ndash; a grader function was invoked more times than the task allows.</li>
       </ul>
     </section>
 
     <section>
       <h2>Output-Only Subtasks</h2>
-      <p>If a task includes output-only subtasks, a single submission may contain:</p>
+      <p>For tasks that include output-only subtasks, contestants may submit:</p>
       <ul>
-        <li>At most one C++ source file.</li>
-        <li>Any number of output files, with at most one file per output-only subtask.</li>
+        <li>No more than one C++ source file.</li>
+        <li>Any number of output files, including zero, with at most one output file per output-only subtask.</li>
       </ul>
-      <p>Submissions are evaluated according to the following rules:</p>
+      <p>Submissions are scored as follows:</p>
       <ul>
-        <li>For each programming subtask, the C++ source file, if provided, will be compiled and graded. If no source file is included, the score for that subtask will be 0.</li>
-        <li>For each output-only subtask, an included output file specific to that subtask will be graded. Otherwise, if a C++ source file is present, the compiled program will be executed and its output will be graded for that subtask.</li>
+        <li>For programming subtasks, the source file (when present) is compiled and graded; if none is submitted, that subtask scores 0.</li>
+        <li>For each output-only subtask: if a dedicated output file was submitted for it, that file is graded directly. If not, but a source file was submitted, CMS compiles and runs it, then grades the resulting output according to the protocol described for that specific subtask in the task statement.</li>
       </ul>
-      <p class="note">Program execution is subject to the time and memory limits given in the grading system, regardless of the subtask type.</p>
+      <p class="note"><strong>Note.</strong> Whenever a program is executed by CMS, the standard time and memory limits apply, regardless of which subtask type triggered the run.</p>
     </section>
 
     <section>
-      <h2>Task Attachments</h2>
-      <p>There is an attachment package that you can download from the contest system, containing:</p>
+      <h2>Task Attachment Packages</h2>
+      <p>Each task on the contest system comes with a downloadable package containing:</p>
       <ul>
-        <li>Sample graders.</li>
-        <li>Sample implementations.</li>
-        <li>Example test cases.</li>
-        <li>Compile, run, and submit scripts.</li>
+        <li>Sample graders</li>
+        <li>Reference/sample solutions</li>
+        <li>Example test data</li>
+        <li>Scripts to compile, run, and submit your solution</li>
       </ul>
-      <p>Each task has a subtask with index 0 which is worth 0 points. Unless specified otherwise in the problem statement, the test cases for this subtask are the same as the sample test cases included in the task statement and in the downloadable attachment.</p>
-      <p>When you test your code locally, use the scripts from the attachment packages. The compiler option is <code>-std=gnu++20</code>.</p>
+      <p>Every task also includes a special subtask numbered 0, worth zero points. Unless the task statement says otherwise, its test data is identical to the sample cases shown in the statement and included in the attachment package.</p>
+      <p>When testing locally, contestants are encouraged to use the scripts provided in the attachment package rather than compiling manually. Note that the contest uses the <code>-std=gnu++20</code> standard.</p>
     </section>
 
     <section>
       <h2>Sample Graders</h2>
-      <p>Sample graders provide a basic mechanism for running your solution. In many cases they are simpler than the graders used to judge your solution.</p>
-      <p>When testing a program with the sample grader, your input should match the format and constraints from the task statement, otherwise unspecified behavior may occur.</p>
-      <p>If a sample grader procedure call violates constraints in the task statement, the sample grader may print an error message and terminate immediately. Unless specified otherwise, the error message is one of the following:</p>
+      <p>The sample grader included with each task is a simplified tool meant to help you run your own solution. It is not the same grader CMS uses for official judging. In many cases it does nothing more than print your solution's output, without checking whether it is actually correct.</p>
+      <p>When you run your solution through the sample grader, make sure your input strictly matches the format and constraints given in the task statement; deviating from this may produce unpredictable results. Unless stated otherwise, tokens on the same line are separated by a single space.</p>
+      <p>Input/output formats in task statements are written using symbolic placeholders. For example:</p>
+      <pre>N         M
+A[0]      A[1]    &hellip;    A[N-1]
+P[0]      Q[0]
+P[1]      Q[1]
+&hellip;
+P[M-1]    Q[M-1]</pre>
+      <p>Here's how to read it:</p>
+      <ol>
+        <li>Line 1 holds N and M, separated by a space.</li>
+        <li>Line 2 holds N space-separated values: A[0] through A[N-1].</li>
+        <li><strong>Important.</strong> This notation doesn't guarantee at least three values appear &ndash; N could be 1 (a single value) or even 0 (an empty line).</li>
+        <li>The following M lines each hold one pair from arrays P and Q. As with N, M could be 0 or 1.</li>
+      </ol>
+      <p>If a call to a sample grader function breaks one of the task's constraints, the sample grader will typically print an error and stop immediately. Unless the task says otherwise, the message will be one of:</p>
       <ul>
-        <li><code>Invalid argument</code> - a grader procedure was called with arguments which violate a constraint.</li>
-        <li><code>Too many calls</code> - a grader procedure was called more times than the limit provided in the task statement.</li>
+        <li><code>Invalid argument</code> &ndash; the function was called with values that violate a stated or implied constraint.</li>
+        <li><code>Too many calls</code> &ndash; the grader function was called more times than the task statement allows.</li>
       </ul>
-      <p>Contestants can inspect the sample grader source code to see what triggers these errors and may modify the sample grader to print more information.</p>
+      <p>Contestants are welcome to look through the sample grader's source code to understand exactly what causes this error, and may even modify their local copy to print more detailed diagnostics.</p>
     </section>
 
     <section>
-      <h2>Alternative Submission Mechanism</h2>
-      <p>In addition to submitting solutions through the CMS web interface, contestants may also use the <code>submit</code> script included in the task attachment package.</p>
+      <h2>Submitting Outside the CMS Web Interface</h2>
+      <p>Besides uploading through the CMS website, contestants can also submit using the <code>submit</code> script bundled in each task's attachment package.</p>
       <ul>
-        <li>For tasks requiring a single source file, run the script with one argument: the source file to submit.</li>
-        <li>For tasks that allow or require one or more output files, run the script with all files the contestant wants to submit.</li>
+        <li>For tasks that take a single source file, run the script with one argument &ndash; the name of that file.</li>
+        <li>For tasks that accept or require output files, run the script with all the files you want to submit (output files, source code, or both). Output files must follow the exact naming convention shown in the CMS interface; the attachment package already includes empty placeholder files with the correct names.</li>
       </ul>
-      <p>The script first attempts to submit the files online via CMS. If the submission is successful, it will appear in the CMS interface with feedback. If it fails, the submission is recorded offline on the contestant's machine.</p>
-      <p>When the contest is over, the scientific committee collects all locally recorded submissions and imports them into CMS in chronological order.</p>
+      <p>The script first tries to submit your files online through CMS. If that succeeds, your submission and its feedback will show up in the CMS interface as usual. If it fails for any reason, including a timeout, the submission is instead saved locally on your machine.</p>
+      <p>After the contest ends, the scientific committee gathers any locally saved submissions and imports them into CMS in chronological order. If a contestant ends up with more submissions than the task allows, online submissions are prioritized over offline ones, and among offline submissions, earlier ones take precedence over later ones.</p>
     </section>
   </main>
 </body>
