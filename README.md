@@ -27,7 +27,7 @@ cd autoinstall
 
 2. **Clone and Configure the Repository**
    ```bash
-   git clone https://github.com/ioi-2025/contestant-vm
+   git clone https://github.com/ioi-2026/contestant-vm
    sudo -s
    cd contestant-vm
    cp config.local.sh.sample config-.local.sh   # Edit as needed
