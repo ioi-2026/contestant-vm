@@ -85,19 +85,7 @@ cp "$cache/intellij-idea-keybindings-${VSCODE_INTELLIJ_VERSION}.vsix" /opt/ioi/m
 cp "$cache/vscode-clangd-${VSCODE_CLANGD_VERSION}.vsix" /opt/ioi/misc/extra-vsc-exts/vscode-clangd.vsix
 rm -rf /tmp/vscode-extensions
 
-# Configuration for C++ standard and compiler path
-VSCODE_SETTINGS_DIR="/home/ioi/.config/Code/User"
-VSCODE_SETTINGS_FILE="$VSCODE_SETTINGS_DIR/settings.json"
-
-mkdir -p "$VSCODE_SETTINGS_DIR"
-
-cat <<EOF > "$VSCODE_SETTINGS_FILE"
-{
-  "C_Cpp.default.cppStandard": "gnu++20",
-  "C_Cpp.default.compilerPath": "/usr/bin/g++",
-  "extensions.ignoreRecommendations": true,
-  "extensions.showRecommendationsOnlyOnDemand": true
-}
-EOF
-
-chown -R ioi:ioi "$VSCODE_SETTINGS_DIR"
+# Configure and verify the C++ debugger after the extension is installed.
+bash sbin/patch-vscode-cpptools.sh
+bash sbin/configure-gdb.sh
+bash sbin/configure-vscode.sh
